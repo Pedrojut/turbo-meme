@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video de Flores</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #333; /* Fondo gris oscuro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Ocultar el video inicialmente */
+        }
+        .texto {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background-color: black; /* Fondo negro */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 1.2em;
+        }
+        .botones {
+            margin-top: 20px;
+        }
+        .botones button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">Cargando...</div>
+    <video id="video1" src="animaciovideo.mp4" muted playsinline preload="auto" loop alt="Animación de video"></video>
+    <audio id="audio" src="iwanabeyours.mp3" preload="auto"></audio>
+    <div class="texto" id="texto">
+       vamos a pasear al parque ;D 
+        <div class="botones">
+            <button onclick="playMedia()">Sí</button>
+            <button onclick="alert('Video no reproducido')">No</button>
+        </div>
+    </div>
+
+    <script>
+        function playMedia() {
+            var video1 = document.getElementById('video1');
+            var audio = document.getElementById('audio');
+            var texto = document.getElementById('texto');
+            var loading = document.getElementById('loading');
+            texto.style.display = 'none'; // Ocultar el texto y los botones
+            loading.style.display = 'none'; // Ocultar el mensaje de carga
+            video1.style.display = 'block';
+            video1.play();
+            audio.play();
+        }
+
+        // Ocultar el mensaje de carga cuando los videos estén listos
+        window.onload = function() {
+            var loading = document.getElementById('loading');
+            loading.style.display = 'none';
+        };
+    </script>
+</body>
+</html>
